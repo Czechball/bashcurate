@@ -1,12 +1,12 @@
 #!/bin/bash
 if [[ $1 == "" ]];
 then
-	printf "Usage: $0 (swf url)\n"
+	printf "Usage: $0 (file url)\n"
 	exit
 else
 	printf "$1"
 	url=$1
-	printf "\nEnter swf name: "
+	printf "\nEnter game name: "
 	read name
 	printf "Enter series: "
 	read series
@@ -20,11 +20,11 @@ else
 	read notes
 	printf "Enter author notes: "
 	read anotes
-	mkdir $name
-	cd $name
+	mkdir "$name"
+	cd "$name"
 	test2=$(echo "${1##http*://}")
-	test3=$(echo "${test2%/*.swf}")
-	mkdir -p content/$test3
+	test3=$(echo "${test2%/*.*}")
+	mkdir -p content/"$test3"
 	printf "Title: $name
 Series: $series
 Developer: $developer
